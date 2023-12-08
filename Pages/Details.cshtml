@@ -1,0 +1,32 @@
+﻿@page "/pizza/{slug}/{id}"
+@model PizzaAppWeb.Pages.DetailsModel
+
+
+<h2 class="my-3">@Model.Pizza.Nome</h2>
+<div class="row">
+    <div class="col-4">
+        <img class="img-fluid rounded" src="@Model.Pizza.ImagemUri">
+    </div>
+    <div class="col-6">
+        <h4 class="my-3">Sobre:</h4>
+        <p>@Model.Pizza.Descricao</p>
+        <h4 class="my-3">Mais Info:</h4>
+        <ul>
+            <li>
+                <label asp-for ="Pizza.Preco"></label>:
+                @Html.DisplayFor(model => model.Pizza.Preco)
+            </li>
+
+            <li>
+                <label asp-for="Pizza.EntregaExpressaFormatada"></label>:
+                @Model.Pizza.EntregaExpressaFormatada
+            </li>
+
+            <li>
+                <label asp-for="Pizza.DataCadastro"></label>:
+                @Html.DisplayFor(model => model.Pizza.DataCadastro)</li>
+        </ul>
+        <a class="btn my-3 btn-primary"
+        asp-page="/Edit" asp-route-id="@Model.Pizza.PizzaId">Editar</a>
+    </div>
+</div>

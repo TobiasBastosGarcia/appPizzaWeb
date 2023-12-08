@@ -1,0 +1,81 @@
+﻿@page
+@model PizzaAppWeb.Pages.EditModel
+
+
+<div class="row pt-5">
+    <div class="col-md-4">
+        <form method="post">
+            <h4>Alteração de Pizza</h4>
+            <hr />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type = "hidden" asp-for="Pizza.PizzaId" />
+
+            <div class="form-group">
+                <label asp-for="Pizza.Nome" class="control-label"></label>
+                <input asp-for="Pizza.Nome" class="form-control" />
+                <span asp-validation-for="Pizza.Nome" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Pizza.Descricao" class="control-label"></label>
+                <input asp-for="Pizza.Descricao" class="form-control" />
+                <span asp-validation-for="Pizza.Descricao" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Pizza.ImagemUri" class="control-label"></label>
+                <input asp-for="Pizza.ImagemUri" class="form-control" />
+                <span asp-validation-for="Pizza.ImagemUri" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Pizza.Preco" class="control-label"></label>
+                <input asp-for="Pizza.Preco" class="form-control" />
+                <span asp-validation-for="Pizza.Preco" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group mt-3 mb-3">
+                <input class="form-check-input" asp-for="Pizza.EntregaExpressa" />
+                <label asp-for="Pizza.EntregaExpressa"></label>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Pizza.DataCadastro" class="control-label"></label>
+                <input asp-for="Pizza.DataCadastro" class="form-control" />
+                <span asp-validation-for="Pizza.DataCadastro" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3 mb-3">
+                <label asp-for="Pizza.MarcaId" class="control-label"></label>
+                <select class="form-select" asp-for="Pizza.MarcaId"
+                        asp-items="Model.MarcaOptionItems">
+                    <option value="">Selecione uma opção</option>
+                </select>
+                <span asp-validation-for="Pizza.MarcaId" class="text-danger">
+                </span>
+            </div>
+
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <input type="submit" value="Excluir" class="btn btn-danger" 
+                asp-page-handler="Exclusao"/>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
